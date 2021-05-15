@@ -1,0 +1,75 @@
+    $imgT : 150px;
+    
+    
+    .portada{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .contenedor-portada{
+        background-color: $color-verde-medio;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+      
+    }
+
+    .menu{
+        background-color: $color-rojo;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &-img{
+            width: $imgT;
+            cursor: pointer;
+        }
+
+        h1{
+            cursor:pointer;
+        }
+
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: $Oswald;
+            font-size: 1.5em;
+        }
+
+        &-item > div:hover{
+            padding-bottom: 20px;
+        }
+
+        &-item:nth-child(1){
+            background-color: $color-azul-oscuro;
+            width: 50vw;
+            height: 50vh;
+        }
+        &-item:nth-child(2){
+            background-color: $color-rojo;
+            width: 50vw;
+            height: 50vh;
+        }
+        &-item:nth-child(3){
+            background-color: $color-verde-oscuro;
+            width: 50vw;
+            height: 50vh;
+        }
+        &-item:nth-child(4){
+            background-color: $color-verde-medio;
+            width: 50vw;
+            height: 50vh;
+        }
+    }
+
+    .fullSize{
+            width: 100vw!important;
+            height: 100vh!important;
+    }
+
