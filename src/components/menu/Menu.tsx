@@ -1,8 +1,19 @@
 import React, { FC, MutableRefObject, useRef } from 'react'
+import CSS from 'csstype'
 import yo from '../../img/yo.png'
 import contacto from '../../img/contacto.png'
 import illustracion from '../../img/illustracion.png'
 import frontEnd from '../../img/frontEnd.png'
+
+const menu:CSS.Properties = {
+    backgroundColor: '#FF414D',
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+}
+
 
 
 export const Menu:FC<any> = () => {
@@ -24,7 +35,7 @@ export const Menu:FC<any> = () => {
 
 
     return (
-        <div className="menu" ref={ menuDiv }>
+        <div className="menu" style={menu} ref={ menuDiv }>
             
                 <div className="menu-item" ref={ yoDiv }>
                     <div>

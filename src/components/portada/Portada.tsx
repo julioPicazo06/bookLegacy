@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import cat from '../../img/cat.png'
+import Prueba from '../Prueba/Prueba'
 
 export const Portada:FC<any> = () => {
     return (
@@ -10,11 +11,13 @@ export const Portada:FC<any> = () => {
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet, culpa quos minima earum sit architecto nulla ipsa. Facere commodi at id odio, nihil, obcaecati sed quidem aut, sapiente accusamus neque.
                 </p>
+                <a href="#menu">
+                <h1>Hola</h1>
+                </a>
+                <Prueba />
             </div>
             <img src={ cat } />
-            <a href="#menu">
-                <h1>Hola</h1>
-            </a>
+            
         </div>
     )
 }
