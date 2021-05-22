@@ -1,6 +1,8 @@
 import React from 'react'
 import { Menu } from './components/menu/Menu'
 import { Portada } from './components/portada/Portada'
+import { Link, animateScroll as scroll } from "react-scroll";
+
 
 export const App = () => {
     return (
