@@ -15,11 +15,20 @@ const Imagen: FC<ImagenModel> = ({ width, height }: ImagenModel) => {
 
         img = p5.loadImage('img/cat.png')
         p5.background(img)
+        p5.image(img , 0 , 0 , width , height)
 
+        
     }
 
     const draw = (p5: p5Types) => {
-        p5.image(img, p5.mouseX,p5.mouseY, width, height)
+        
+        // p5.image(img, p5.mouseX,p5.mouseY, width, height)
+        
+        // for (let i = 0; i < 50; i++) {
+        //     p5.tint(p5.random(0,255), p5.random(0,255) , p5.random(0,255))
+        //     p5.image(img , 0 , 0 , width , height)
+        // }
+        
 
     }
 
@@ -27,7 +36,12 @@ const Imagen: FC<ImagenModel> = ({ width, height }: ImagenModel) => {
 
     }
 
-    return <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} />
+    const mouseReleased = ( p5: p5Types ) => {
+        p5.tint(p5.random(0,255), p5.random(0,255) , p5.random(0,255))
+            p5.image(img , 0 , 0 , width , height)
+    }
+
+    return <Sketch setup={setup} draw={draw} mouseClicked={mouseClicked} mouseReleased={mouseReleased} />
 }
 
 export default Imagen

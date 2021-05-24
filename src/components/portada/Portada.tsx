@@ -8,7 +8,9 @@ import Imagen from '../Imagen/Imagen';
 export const Portada:FC<any> = () => {
     return (
         <div className="contenedor-portada">
-            <img src={ cat } className="gato-img" />
+            {/* <img src={ cat } className="gato-img" /> */}
+
+            <Imagen width={ 400 } height={ 350 }/>
 
             <div>
                 <div className="name-container">
@@ -31,7 +33,7 @@ export const Portada:FC<any> = () => {
 
                  </div>
                  <div>
-                    <Imagen width={ 200 } height={ 200 }/>
+                    
 
                  </div>
                
