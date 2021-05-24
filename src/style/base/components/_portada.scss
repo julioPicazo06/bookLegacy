@@ -7,16 +7,18 @@
     }
 
     .contenedor-portada{
-        background-color: $color-verde-medio;
+        background-color: $color-verde-oscuro!important;
         width: 100vw;
         height: 100vh;
         display: flex;
-        flex-direction: row;
+        align-items: center;
+        flex-direction: column;
+    
       
     }
 
     .menu{
-        background-color: $color-rojo;
+        background-color: $color-verde-oscuro;
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -42,34 +44,49 @@
             font-size: 1.5em;
         }
 
-        &-item > div:hover{
-            padding-bottom: 20px;
-        }
-
-        &-item:nth-child(1){
-            background-color: $color-azul-oscuro;
-            width: 50vw;
-            height: 50vh;
-        }
-        &-item:nth-child(2){
-            background-color: $color-rojo;
-            width: 50vw;
-            height: 50vh;
-        }
-        &-item:nth-child(3){
-            background-color: $color-verde-oscuro;
-            width: 50vw;
-            height: 50vh;
-        }
-        &-item:nth-child(4){
-            background-color: $color-verde-medio;
-            width: 50vw;
-            height: 50vh;
-        }
     }
 
     .fullSize{
             width: 100vw!important;
             height: 100vh!important;
     }
+
+.gato-img{
+    width: 500px;
+    height: 450px;
+}
+
+
+.name-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: $Oswald ;
+    font-size: 4em;                                                                                                                                                                                             ;
+    &-uno{                                                                                          
+        color: $color-azul-oscuro-dos;
+    }
+    &-dos{
+        color: white;
+    }
+}
+
+.boton-inicio{
+    color: white;
+    border: white solid 1px;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    font-size: 2em;
+    font-family: $Oswald;
+    cursor: pointer;
+}
+
+.boton-contenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 

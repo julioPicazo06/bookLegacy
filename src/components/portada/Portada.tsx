@@ -2,28 +2,42 @@ import React, { FC } from 'react'
 import cat from '../../img/cat.png'
 import Prueba from '../Prueba/Prueba'
 import { Link, animateScroll as scroll } from "react-scroll";
+import Imagen from '../Imagen/Imagen';
 
 
 export const Portada:FC<any> = () => {
     return (
         <div className="contenedor-portada">
+            <img src={ cat } className="gato-img" />
+
             <div>
-                <h1>Julio Eduardo</h1>
-                <h1>Picazo Rodriguez</h1>
+                <div className="name-container">
+                    <span className="name-container-uno">
+                        Julio Eduardo 
+                    </span>
+                    <span className="name-container-dos">
+                        Picazo Rodriguez    
+                    </span>
+                </div>
+                 <div className="boton-contenedor">
                  <Link to="menu"
+                        className="boton-inicio"
                         spy={true}
                         smooth={true}
-                        duration={ 500 }>lorem20</Link>
+                        duration={ 500 }>
 
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet, culpa quos minima earum sit architecto nulla ipsa. Facere commodi at id odio, nihil, obcaecati sed quidem aut, sapiente accusamus neque.
-                </p>
-                <a href="#menu">
-                <h1>Hola</h1>
-                </a>
-                <Prueba />
+                        Web Designer / Web Developer / Ilustrator
+                        </Link>
+
+                 </div>
+                 <div>
+                    <Imagen width={ 200 } height={ 200 }/>
+
+                 </div>
+               
+               
+                {/* <Prueba /> */}
             </div>
-            <img src={ cat } />
             
         </div>
     )
