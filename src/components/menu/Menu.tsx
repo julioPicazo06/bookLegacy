@@ -4,6 +4,8 @@ import yo from '../../img/yo.png'
 import contacto from '../../img/contacto.png'
 import illustracion from '../../img/illustracion.png'
 import frontEnd from '../../img/frontEnd.png'
+import { ContenidoYo } from '../ContenidoYo/ContenidoYo'
+import { TimeLine } from '../TimeLine/TimeLine'
 
 
 
@@ -19,6 +21,7 @@ export const Menu:FC<any> = () => {
         flexDirection: 'row',
         flexWrap: 'wrap'
     }
+    const [divContent, setDivContent] = useState(true)
     
     const colorStyles = (  color : string):CSS.Properties => (
              {
@@ -63,6 +66,8 @@ export const Menu:FC<any> = () => {
                 default:
                     break;
             }
+
+            setDivContent(!divContent)
             
             
     }
@@ -73,10 +78,18 @@ export const Menu:FC<any> = () => {
         <div className="menu" style={menu} >
             
                 <div style={colorStyles('#002D40')} ref={ yoRef }>
-                    <div className="item-hover" id="yo" onClick={ e => handleClick( e ) }>
-                       <img className="menu-img" src={ yo }  alt="yo"/>
-                        <h1>Yo</h1>  
-                    </div>
+                    
+                    {
+                        !divContent ? (
+                            <TimeLine/>
+                        ):(
+                           <div className="item-hover" id="yo" onClick={ e => handleClick( e ) }>
+                            <img className="menu-img" src={ yo }  alt="yo"/>
+                                <h1>Yo</h1>  
+                            </div>
+ 
+                        )
+                    }
                    
                 </div>
                 
