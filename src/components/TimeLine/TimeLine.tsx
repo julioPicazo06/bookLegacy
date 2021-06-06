@@ -13,6 +13,7 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { Content } from '../StylesComponents/ContentStyles';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +29,8 @@ export  const  TimeLine = ()=> {
   const classes = useStyles();
 
   return (
-    <Timeline align="alternate">
+    <Content color={'#1AA6B7'}>
+          <Timeline align="alternate">
       <TimelineItem>
         <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
@@ -103,5 +105,6 @@ export  const  TimeLine = ()=> {
         </TimelineContent>
       </TimelineItem>
     </Timeline>
+    </Content>
   );
 }

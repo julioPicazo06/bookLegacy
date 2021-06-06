@@ -8,9 +8,9 @@ import Imagen from '../Imagen/Imagen';
 export const Portada:FC<any> = () => {
     return (
         <div className="contenedor-portada">
-            {/* <img src={ cat } className="gato-img" /> */}
+            <img src={ cat } className="gato-img" />
 
-            <Imagen width={ 400 } height={ 350 }/>
+            {/* <Imagen width={ 400 } height={ 350 }/> */}
 
             <div>
                 <div className="name-container">
