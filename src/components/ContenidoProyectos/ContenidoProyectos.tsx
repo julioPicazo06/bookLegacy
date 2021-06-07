@@ -3,7 +3,7 @@ import {Content} from '../StylesComponents/ContentStyles'
 
 const ContenidoProyectos = () => {
     return (
-        <Content color={"#7BE495"}>
+        <Content color={"#7BE495"} >
             <div className="row">
                 cerrar
             </div>

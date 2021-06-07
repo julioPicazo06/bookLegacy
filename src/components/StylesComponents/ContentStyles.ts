@@ -5,6 +5,13 @@ export interface ContentStyle {
     color:string
 }
 
+export interface MenuElementStyle {
+    divWidth:string ;
+    divHeigth:string;
+    color:string
+}
+
+
 export const Content = styled.div<ContentStyle>`
     width: 100%;
     height: 100vh;
@@ -15,6 +22,15 @@ export const Content = styled.div<ContentStyle>`
 
     
 `;
+
+export const MenuElementsDiv = styled.div<MenuElementStyle>`
+            background-color: ${props => `${props.color}`};
+            width: ${props => `${props.divWidth}`};
+            height: ${props => `${props.divHeigth}`};
+            transition: 'all 1s';
+
+
+`
 
 
 export const MenuSection = styled.div`
@@ -31,8 +47,14 @@ export const MenuSection = styled.div`
                     flex-direction: column;
                     justify-items: center;
                     align-items: center;
+                    &:hover{
+                        padding-top: 20px;
+                        transition: 'all 1s';
+                    }
                 }
 `
+
+
 
 
 

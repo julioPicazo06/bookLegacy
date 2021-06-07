@@ -7,7 +7,7 @@ import frontEnd from '../../img/frontEnd.png'
 import { ContenidoYo } from '../ContenidoYo/ContenidoYo'
 import { TimeLine } from '../TimeLine/TimeLine'
 import ContenidoProyectos from '../ContenidoProyectos/ContenidoProyectos'
-import { MenuSection } from '../StylesComponents/ContentStyles'
+import { MenuSection  } from '../StylesComponents/ContentStyles'
 import ContenidoIllustracion from '../ContenidoIllustracion/ContenidoIllustracion'
 import ContenidoContact from '../ContenidoContact/ContenidoContact'
 
@@ -30,12 +30,19 @@ export const Menu: FC<any> = () => {
     const [illustartorContent, setIllustartorContent] = useState<boolean>(true)
     const [contactoContent, setContactoContent] = useState<boolean>(true)
 
-    const colorStyles = (color: string): CSS.Properties => (
+
+    const [illustration, setillustration] = useState<string>('flex')
+    const [frontEndDiv, setFrontEndDiv] = useState<string>('flex')
+    const [yoDiv, setYoDiv] = useState<string>('flex')
+    const [contactoDiv, setContactoDiv] = useState<string>('flex')
+
+
+    const colorStyles = (color: string , display:string): CSS.Properties => (
         {
             backgroundColor: color,
             width: divWidth,
             height: divHeigth,
-            display: 'flex',
+            display: display,
             transition: 'all 1s'
         }
     )
@@ -44,32 +51,42 @@ export const Menu: FC<any> = () => {
 
 
     const handleClick = (e: MouseEvent<HTMLDivElement>): void => {
+        
         setDivWidth('100vw')
         setDivHeigth('100vh')
         console.log(e.currentTarget.id)
         switch (e.currentTarget.id) {
             case 'yo':
-                frontEndRef.current.style.display = "none"
-                illustracionRef.current.style.display = "none"
-                contactoRef.current.style.display = "none"
+                setillustration('none')
+                setFrontEndDiv('none')
+                setYoDiv('flex')
+                setContactoDiv('none')
                 setDivContent(!divContent)
                 break;
             case 'frontEnd':
-                yoRef.current.style.display = "none"
-                illustracionRef.current.style.display = "none"
-                contactoRef.current.style.display = "none"
+                setillustration('none')
+                setFrontEndDiv('flex')
+                setYoDiv('none')
+                setContactoDiv('none')
+
                 setFrontEndContent(!frontEndContent)
                 break;
             case 'ilustracion':
-                yoRef.current.style.display = "none"
-                frontEndRef.current.style.display = "none"
-                contactoRef.current.style.display = "none"
+                setillustration('flex')
+                setFrontEndDiv('none')
+                setYoDiv('none')
+                setContactoDiv('none')
+
                 setIllustartorContent(!illustartorContent)
+                // setillustration('none')
                 break;
             case 'contacto':
-                yoRef.current.style.display = "none"
-                frontEndRef.current.style.display = "none"
-                illustracionRef.current.style.display = "none"
+                setillustration('none')
+                setFrontEndDiv('none')
+                setYoDiv('none')
+                setContactoDiv('flex')
+
+
                 setContactoContent(!contactoContent)
                 break;
             default:
@@ -85,14 +102,16 @@ export const Menu: FC<any> = () => {
 
             setDivWidth('50vw')
             setDivHeigth('50vh')
-            // yoRef.current.style.display = "flex"
-            // frontEndRef.current.style.display = "flex"
-            illustracionRef.current.style.display = "flex"
-            contactoRef.current.style.display = "flex"
+            setillustration('flex')
+                setFrontEndDiv('flex')
+                setYoDiv('flex')
+                setContactoDiv('flex')
 
-
-            console.log(menuRef.current.style.display)
-
+            menuRef.current.style.width = '100vw'
+            menuRef.current.style.height = '100vh'
+            menuRef.current.style.display = 'flex!important'
+            menuRef.current.style.flexDirection = 'row'
+            menuRef.current.style.flexWrap = 'wrap'
     }
 
    
@@ -101,7 +120,9 @@ export const Menu: FC<any> = () => {
 
         <div className="menu" style={menu} ref={menuRef} >
 
-            <div style={colorStyles('#002D40')} ref={yoRef}>
+    
+
+            <div style={colorStyles('#002D40' , yoDiv)} ref={yoRef}>
 
                 {
                     !divContent ? (
@@ -121,7 +142,7 @@ export const Menu: FC<any> = () => {
 
 
 
-            <div style={colorStyles('#FF414D')} ref={frontEndRef}>
+            <div style={colorStyles('#FF414D' , frontEndDiv)} ref={frontEndRef}>
                 {frontEndContent ?
                     (<MenuSection>
                         <div className="item-hover" id="frontEnd" onClick={e => handleClick(e)}>
@@ -139,7 +160,7 @@ export const Menu: FC<any> = () => {
 
 
 
-            <div style={colorStyles('#329D9C')} ref={illustracionRef} >
+            <div style={colorStyles('#329D9C' , illustration)} ref={illustracionRef} >
                 {
                     illustartorContent ? (
                         <MenuSection>
@@ -157,7 +178,7 @@ export const Menu: FC<any> = () => {
 
 
 
-            <div style={colorStyles('#56C596')} ref={contactoRef}>
+            <div style={colorStyles('#56C596' , contactoDiv)} ref={contactoRef} >
                 {
                     contactoContent ? (
                                 <MenuSection>
