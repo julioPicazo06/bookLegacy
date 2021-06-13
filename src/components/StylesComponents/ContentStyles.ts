@@ -11,6 +11,22 @@ export interface MenuElementStyle {
     color:string
 }
 
+export interface ModuloType {
+    width? : number ;
+    height? : number;
+    background: string;
+    display?: boolean;
+}
+
+export interface MenuGType {
+    display? : string;
+    column? : boolean;
+    row?:boolean;
+    wrap?:boolean;
+    color?:string;
+
+}
+
 
 export const Content = styled.div<ContentStyle>`
     width: 100%;
@@ -19,6 +35,8 @@ export const Content = styled.div<ContentStyle>`
     ${props => props.color &&`
         background-color:${props.color};
     `}
+    overflow: auto;
+
 
     
 `;
@@ -53,6 +71,33 @@ export const MenuSection = styled.div`
                     }
                 }
 `
+
+// este es el menu completo
+export const MenuG = styled.div<MenuGType>`
+    width: 100%;
+    height:100vh;
+    display : ${props => `${props.display}`}; 
+    ${props => props.column && `flex-direction:column;`}  ;
+    ${props => props.row && `flex-direction:row;`}  ;         
+    ${props => props.wrap &&`flex-wrap:wrap`};
+    ${props => props.color && `background-color:${props.color}`}
+    
+`
+
+// esta es una seccion
+export const Modulo = styled.div<ModuloType>`
+    background-color : ${props=> `${props.background}`};
+    width : ${props => `${props.width}%`}; 
+    height : ${props => `${props.width}vh`};
+    display: ${props=> !props.display ? `none` : `block`} ;
+    transition-property : width , display ;
+    transition-duration:  .3s , .3s;
+    transition-timing-function: ease-out;
+    overflow: auto;
+
+    
+`
+
 
 
 

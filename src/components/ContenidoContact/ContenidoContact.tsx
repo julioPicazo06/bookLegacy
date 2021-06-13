@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Content } from '../StylesComponents/ContentStyles'
+import CloseIcon from '@material-ui/icons/Close';
 
-const ContenidoContact = () => {
+interface PropsContent {
+    handleClose:Function
+}
+
+const ContenidoContact:FC<PropsContent> = ({handleClose}:PropsContent):JSX.Element => {
     return (
-        <Content color={"#7BE495"}>
-            <div className="row">
-                cerrar
+        <Content color={"#56C596"}>
+        <div className="row">
+            <div className="col-xs-1-12">
+                <div className="cursor" data-text="contacto" onClick={(e)=>handleClose(e)}>
+                <CloseIcon color="action" style={{
+                        paddingRight: "30px",
+                        float: "right"
+                }}
+                data-text="contacto" onClick={(e)=>handleClose(e)}
+                />
+                </div>
             </div>
-        </Content>
-    )
+        </div>
+</Content>
+)
+    
 }
 
 export default ContenidoContact

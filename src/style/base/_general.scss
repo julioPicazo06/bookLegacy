@@ -3,4 +3,38 @@
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: hidden;
+
 }
+
+.cursor {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+.column {
+    flex-direction: column;
+}
+.row {
+    flex-direction: row;
+}
+.justificar {
+    justify-content: center;
+}
+.centrar {
+    align-items: center;
+}
+.height50 {
+    height: 50vh
+}
+
+.autoScroll{
+    overflow: auto!important;
+    overflow-y: auto!important;
+}
+.blanco {
+    color: white;
+}
+
