@@ -5,14 +5,11 @@ import { Portada } from './components/portada/Portada'
 
 export const App = () => {
     return (
-        <div style={{
-            overflowY: 'hidden'
-        }}>
+        <div className="principal">
             <section id="portada">
                 <Portada />
             </section>
-            <section id="menu">
-                {/* <Menu/> */}
+            <section id="menu" >
                 <MenuGeneral/>
             </section>
         

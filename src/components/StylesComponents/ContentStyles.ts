@@ -27,6 +27,10 @@ export interface MenuGType {
 
 }
 
+export interface ArrowButtonModel {
+    botom? : string
+}
+
 
 export const Content = styled.div<ContentStyle>`
     width: 100%;
@@ -36,6 +40,7 @@ export const Content = styled.div<ContentStyle>`
         background-color:${props.color};
     `}
     overflow: auto;
+    overflow-x: hidden;
 
 
     
@@ -95,7 +100,22 @@ export const Modulo = styled.div<ModuloType>`
     transition-timing-function: ease-out;
     overflow: auto;
 
-    
+ `
+
+export const ArrowButton = styled.div<ArrowButtonModel>`
+    z-index: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width:58px;
+    justify-content: center;
+    border-radius: 100px;
+    background-color:rgba(40, 44, 52, 0.863);
+    color:white;
+    cursor:pointer;
+    padding:15px;
+    right:10px; 
+    ${props => `bottom: ${props.botom};`}
 `
 
 
