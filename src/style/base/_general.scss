@@ -169,13 +169,38 @@ body{
 
 .items{
     padding-right: 20px;
+    
     & .item-img > img{
         width:100%;
-        border: 5px solid #329D9C;
+        // border: 5px solid #329D9C;
+        background-color: rgba(0, 0, 0, 0.096);
+        padding:20px;
+        max-width: 400px;
+        transform : all 1s;
+        &:hover{
+        background-color: rgba(0, 0, 0, 0.459);
+
+        }
+
+
+
+    }
+    & .item-img-front{
+        width:100%;
+        // border: 5px solid #329D9C;
         background-color: rgba(0, 0, 0, 0.096);
         padding:20px;
         max-width: 400px;
 
+        
+    }
+
+    & .item-img-front .proyectoNombre-front{
+        height:40px;
+        margin-top: -44px;
+        padding-left: 3px;
+        background-color: rgba(0, 0, 0, 0.466);
+        color: white;
     }
     & .item-img .proyectoNombre{
         height:40px;
@@ -195,11 +220,25 @@ body{
         width:60px;
         height:auto;
         margin:10px;
+        background-color: rgba(0, 0, 0, 0.212);
+        padding:5px;
+        cursor: pointer;
+        &:hover{}
+        background-color: rgba(0, 0, 0, 0.431);
     }
 }
 
 .imagenPrincipal{
     width:100%;
+}
+
+.letraCapital::first-letter{
+    text-transform: capitalize;
+}
+
+.imagenSkills{
+    max-width: 200px;
+    height:auto
 }
 
 

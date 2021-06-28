@@ -1,9 +1,21 @@
+
 import React, { FC } from 'react'
 import CloseIcon from '@material-ui/icons/Close'
 import { Content } from '../StylesComponents/ContentStyles'
 import { TimeLine } from '../TimeLine/TimeLine'
 import codeImg from '../../img/code.png'
 import gato from '../../img/gato.png'
+import GitHubIcon from '@material-ui/icons/GitHub';
+
+// skils 
+import angular from '../../img/skills/angular.png';
+import reactImg from '../../img/skills/react.png';
+import jquery from '../../img/skills/jquery.jpg';
+import javaScriptImg from '../../img/skills/javaScript.png';
+import nodejs from '../../img/skills/nodejs.png'
+
+
+
 
 import {
   JobsTimeLineContent,
@@ -60,7 +72,38 @@ export const ContenidoYo: FC<ContenidoYoModel> = ({
           rigurosas en cuanto al flujo de la información como en desarrollos 
           totalmente libres , así que integró lo mejor de dos mundos que 
           convergen en el front-end.
+          <br />
+          <a className="btn btn-dark btn-lg mt-2" 
+          href="https://drive.google.com/file/d/1a71244TpvgFHgub9G5_ot4hh_Evt6e-q/view?usp=sharing" 
+          target="_blank">CV</a>
+          &nbsp;
+          &nbsp;
+        
+          <a className="btn btn-dark btn-lg mt-2 pl-5 ml-5" href="https://github.com/julioPicazo06" target="_blank">
+          <GitHubIcon />
+          </a>
           </p>
+         
+        </div>
+        <br/>
+        <div className="row">
+          <div className="flex justificar centrar">
+            <h3>Skills </h3>
+          </div>
+          
+                <br/>
+                <br/>
+
+                <div className="flex rowS mt-5 justificar centrar">
+                <img className="img-fluid imagenSkills" src={angular} />
+          
+          <img className="img-fluid imagenSkills" src={jquery} />
+          <img className="img-fluid imagenSkills" src={reactImg} />
+          <img className="img-fluid imagenSkills" src={javaScriptImg} />
+          <img className="img-fluid imagenSkills" src={nodejs} />
+                </div>
+          
+          
         </div>
           <div className='row'>
             <div className='flex justificar centrar'>
@@ -72,6 +115,7 @@ export const ContenidoYo: FC<ContenidoYoModel> = ({
             {TimeLineContent.map(
               ({ nombre, fecha, puesto }: TimeLineContentModel) => (
                 <TimeLineGeneral
+                  key={nombre}
                   nombre={nombre}
                   fecha={fecha}
                   puesto={puesto}
@@ -91,6 +135,7 @@ export const ContenidoYo: FC<ContenidoYoModel> = ({
               {JobsTimeLineContent.map(
                 ({ nombre, fecha, puesto }: TimeLineContentModel) => (
                   <TimeLineGeneral
+                  key={nombre}
                     nombre={nombre}
                     fecha={fecha}
                     puesto={puesto}

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Content } from '../StylesComponents/ContentStyles'
 import CloseIcon from '@material-ui/icons/Close'
 import GridList from '@material-ui/core/GridList'
@@ -8,35 +8,134 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
 
+import cangrejo from '../../img/fizhart/krab.png'
+import murcielago from '../../img/fizhart/murci.png'
+import pollo from '../../img/fizhart/pollo.png'
+import OryMago from '../../img/fizhart/OryMago.png'
+import ilustracion from '../../img/fizhart/illustracion.png'
+import trabajando from '../../img/fizhart/trabajando.png'
+
+
 
 
 interface PropsIllustracion {
     handleClose:Function
 }
 
-const tileData = [
-    {
-      img:
-        'https://images.pexels.com/photos/4201722/pexels-photo-4201722.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-      title: 'Image',
-      author: 'author'
-    },
-    {
-      img:
-        'https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-      title: 'Image',
-      author: 'author'
-    },
-    {
-      img:
-        'https://images.pexels.com/photos/2409503/pexels-photo-2409503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-      title: 'Image',
-      author: 'author'
-    }
-  ]
+export interface imgenes {
+  id : number ,
+  nombre : string,
+  cliente : string ,
+  tecnica : string,
+  imgProyecto : {
+    img:any
+  }
+  descripcion : string
+  img :imgType []
+} 
+
+export interface imgType {
+  src : any ,
+  alt : string
+}
+
+
+export const contenidoProyectos:imgenes[] = [
+  {
+      id : 1 ,
+      nombre : 'Personajes',
+      cliente : 'Personajes propios',
+      tecnica : 'Imágenes vectoriales',
+      imgProyecto : {
+        img : cangrejo
+      },
+      descripcion : 'Caricaturas para un proyecto propio en el que se tenía como límite 5 minutos para la creación del boceto',
+      img : [
+          {
+              src : cangrejo,
+              alt : 'cangrejo'
+          },
+          {
+              src : murcielago,
+              alt :  'murcielago'
+          },
+          {
+              src: pollo ,
+              alt : 'pollo'
+          }
+      ]
+  },
+  {
+      id : 2 ,
+      nombre : 'Diseño de personajes Ory el conejo',
+      cliente : 'Personaje propio',
+      tecnica : 'Imágenes vectoriales',
+      descripcion : 'Ory el conejo es un personaje propio registrado ante indautor en el 2014 ',
+      imgProyecto : {
+        img : OryMago
+      },
+      img : [
+          {
+              src : OryMago,
+              alt : 'OryMago'
+          },
+          {
+              src : ilustracion,
+              alt :  'ilustracion'
+          },
+          {
+              src: trabajando ,
+              alt : 'trabajando'
+          }
+      ]
+  }
+]
+
+
 
 const ContenidoIllustracion:FC<PropsIllustracion> = ({handleClose}:PropsIllustracion):JSX.Element => {
     
+  const [modalContentido, setmodalContentido] = useState({
+    descripcion : '',
+    img :[] ,
+    imgProyecto : {
+      img : ''
+    },
+    nombre : '',
+    cliente : '',
+    tecnica : ''
+  })
+
+  
+
+  console.log(contenidoProyectos)
+  const handleThumbnail = (src:string)=> {
+    setmodalContentido({
+      ...modalContentido ,
+      imgProyecto : {
+        img : src
+      }
+    });
+  }
+
+  const handleClick = (
+                        descripcion: string , 
+                        img:[] , 
+                        imgProyecto:any , 
+                        nombre:string,
+                        cliente:string,
+                        tecnica:string
+                        )=> {
+                          setmodalContentido({
+                            ...modalContentido,
+                            descripcion,
+                            img,
+                            imgProyecto,
+                            nombre,
+                            cliente,
+                            tecnica
+                          })
+                      }
    
 
     return (
@@ -57,62 +156,61 @@ const ContenidoIllustracion:FC<PropsIllustracion> = ({handleClose}:PropsIllustra
           </div>
         </div>
       </div>
-
       <div className='container'>
         <div className='row'>
-          <h1 className='mouse'> Proyectos </h1>
+          <h1 className='mouse letraCapital'> Proyectos Ilustración</h1>
         </div>
-        <div className='row'>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
-            fuga quo quasi, ipsa, tempora omnis, rerum amet architecto nihil
-            quia doloremque esse quod saepe qui in. Omnis, expedita porro! Est
-            quidem voluptatum, ad assumenda atque vel voluptatem odit ratione
-            soluta?
+        <div className='row mouse'>
+          <p className="pt-3 pb-3">
+          Aquí está un poco de mi trabajo en diseño de personajes , algo que me ha gustado mucho a lo largo de los años, digitalizar bocetos y transformarlos en vectores.
           </p>
         </div>
-        <GridList cellHeight={400}>
-          {tileData.map(tile => (
-            <GridListTile key={tile.img}>
-              <img src={tile.img} alt={tile.title} />
-              <GridListTileBar
-                title={tile.title}
-                subtitle={<span>by: {tile.author}</span>}
-                actionIcon={
-                  <IconButton aria-label={`info about ${tile.title}`}>
-                    <InfoIcon />
-                  </IconButton>
-                }
-              />
-            </GridListTile>
-          ))}
-        </GridList>
+        <div className=' items flex rowS flexStart'>
+        {/* <Proyecto img={OryMago} titulo={'mago'}  /> */}
+        {
+          contenidoProyectos.map((item:imgenes)=> (
+            <div
+            className='item-img pr-5 cursor flex column'
+            style={{
+              marginRight: '14px'
+            }}
+            data-bs-toggle='modal'
+            onClick={e=>handleClick(
+                      item.descripcion , 
+                      item.img as [] , 
+                      item.imgProyecto , 
+                      item.nombre ,
+                      item.cliente,
+                      item.tecnica
+                      )}
+            data-bs-target='#modalIllustracion'
+          >
+            <img className='mr-5' src={item.imgProyecto.img} />
+            <span className='proyectoNombre mouse pl-5 f-18 pt-2 flex column centrar'>
+              <p>{item.cliente}</p>
+            </span>
+          </div>
+          ))
+        }
+          
+    
+        </div>
       </div>
 
       <div>
-        {/* Button trigger modal */}
-        <button
-          type='button'
-          className='btn btn-primary'
-          data-bs-toggle='modal'
-          data-bs-target='#modalIcono'
-        >
-          Launch demo modal
-        </button>
-        {/* Modal */}
         <div
           className='modal fade'
-          id='modalIcono'
+          id='modalIllustracion'
           tabIndex={-1}
           aria-labelledby='exampleModalLabel'
           aria-hidden='true'
         >
           <div className='modal-dialog'>
-            <div className='modal-content'>
+            <div className='modal-content colorFondo'>
               <div className='modal-header'>
-                <h5 className='modal-title' id='exampleModalLabel'>
-                  Modal title
-                </h5>
+                <h3 className='modal-title mouse' id='exampleModalLabel'>
+                  {modalContentido.nombre}
+                </h3>
                 <button
                   type='button'
                   className='btn-close'
@@ -120,24 +218,30 @@ const ContenidoIllustracion:FC<PropsIllustracion> = ({handleClose}:PropsIllustra
                   aria-label='Close'
                 />
               </div>
-              <div className='modal-body'>...</div>
-              <div className='modal-footer'>
-                <button
-                  type='button'
-                  className='btn btn-secondary'
-                  data-bs-dismiss='modal'
-                >
-                  Close
-                </button>
-                <button type='button' className='btn btn-primary'>
-                  Save changes
-                </button>
+              <div className='modal-body'>
+                <div className=''>
+                  <img className='imagenPrincipal' src={modalContentido.imgProyecto.img } />
+                </div>
+                <div className='thumbmail-container'>
+                  {
+                    modalContentido.img.map((item:{src:string})=> (
+                      <img src={item.src} key={item.src} className='thumbmail' onClick={()=>handleThumbnail(item.src)} />
+
+                    ))
+                  }
+                </div>
+                <p className='mouse f-18'>
+                  Cliente : {modalContentido.cliente} <br />
+                  Técnica : {modalContentido.tecnica}
+                  <br />
+                  Descripción : {modalContentido.descripcion}
+                  </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-        </Content>
+    </Content>
     )
 }
 
