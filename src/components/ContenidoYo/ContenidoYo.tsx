@@ -90,7 +90,10 @@ export const ContenidoYo: FC<ContenidoYoModel> = ({
                 <br/>
                 <br/>
 
-                <div className="flex rowS mt-5 justificar centrar">
+                <div className="flex rowS mt-5 justificar centrar" style={{
+                  flexWrap: 'wrap',
+                }
+                }>
                 <img className="img-fluid imagenSkills" src={angular} />
           
           <img className="img-fluid imagenSkills" src={jquery} />

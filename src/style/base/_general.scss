@@ -67,7 +67,6 @@ body{
 
 .flecha {
     transform : rotate(270deg);
-    font-size: 3em!important;
     &:hover {
         cursor: pointer;
     }
@@ -86,7 +85,7 @@ body{
 }
 
 .portada {
-    padding:4em;
+    padding:1.5em;
 }
 
 .rotar {
@@ -239,6 +238,10 @@ body{
 .imagenSkills{
     max-width: 200px;
     height:auto
+}
+
+.tituloC{
+    font-size: 2.5em;
 }
 
 

@@ -5,29 +5,34 @@ import { Link } from "react-scroll";
 
 export const Portada: FC<any> = () => {
     return (
-        <div className="contenedor-portada portada">
+        <div className="contenedor-portada portada" >
+            
+
+            <div className="row">
             <img src={cat} className="img-fluid" style={{
-                maxWidth: "450px"
+                maxWidth: "400px"
             }} />
+            </div>
 
 
 
+            <div className="row">
             <div>
-                <div className="name-container letraCursiva rotar ">
-                    <span className="letraCursiva">
-                        Julio Eduardo
+                <div className=" rotar ">
+                    <span className="letraCursiva tituloC ">
+                        Julio Eduardo Picazo Rodriguez
                     </span>
-                    <span className="letraCursiva">
-                        Picazo Rodriguez
-                    </span>
+                   
                 </div>
 
             </div>
-            <div className="mouse f-20 mt-3 pt-3 flex blanco column cuadro">
+            </div>
+            <div className="row">
+               <div className="mouse  flex blanco column cuadro">
 
             
 
-            <p className="textoCapital">
+            <p className="textoCapital statement">
                 &nbsp;
                 Transformo ideas en código funcional y eficiente...
                 &nbsp; &nbsp;y también hago dibujitos.
@@ -38,19 +43,24 @@ export const Portada: FC<any> = () => {
 
 
             </div>
-
-
-            <div className="pt-6 mt-5">
+ 
+            </div>
+            <div className="row">
+                <div className=" mt-1">
                 <Link to="menu"
                     spy={true}
                     smooth={true}
                     duration={500}>
 
-                    <span className="pt-6 mt-6">
-                        <i className="material-icons md-36 flecha ">arrow_back_ios_new</i>
+                    <span className="btn btn-dark">
+                        <i className="material-icons  flecha ">arrow_back_ios_new</i>
                     </span>
                 </Link>
             </div>
+            </div>
+            
+
+            
 
         </div>
     )

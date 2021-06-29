@@ -5,8 +5,12 @@ import { Portada } from './components/portada/Portada'
 
 export const App = () => {
     return (
-        <div className="principal">
-            <section id="portada">
+        <div className="principal" style={{
+            backgroundColor:'#329D9C',
+        }}>
+            <section id="portada" style={{
+            overflow: 'auto'
+        }}>
                 <Portada />
             </section>
             <section id="menu" >
