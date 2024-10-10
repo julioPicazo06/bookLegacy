@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
-import { Content } from '../StylesComponents/ContentStyles'
-import CloseIcon from '@material-ui/icons/Close'
-import contactoImg from '../../img/3.png'
+import contactoImg from 'img/3.png'
+import { Content } from 'components/StylesComponents/ContentStyles'
 
 interface PropsContent {
   handleClose: Function

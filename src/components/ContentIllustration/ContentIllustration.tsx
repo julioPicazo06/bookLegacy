@@ -1,95 +1,8 @@
 import React, { FC, useState } from 'react'
-import { Content } from '../StylesComponents/ContentStyles'
-import CloseIcon from '@material-ui/icons/Close'
-import GridList from '@material-ui/core/GridList'
-import GridListTile from '@material-ui/core/GridListTile'
-import GridListTileBar from '@material-ui/core/GridListTileBar'
-import ListSubheader from '@material-ui/core/ListSubheader'
-import IconButton from '@material-ui/core/IconButton'
-import InfoIcon from '@material-ui/icons/Info'
 
-import cangrejo from '../../img/fizhart/krab.png'
-import murcielago from '../../img/fizhart/murci.png'
-import pollo from '../../img/fizhart/pollo.png'
-import OryMago from '../../img/fizhart/OryMago.png'
-import ilustracion from '../../img/fizhart/illustracion.png'
-import trabajando from '../../img/fizhart/trabajando.png'
-
-
-
-
-interface PropsIllustracion {
-    handleClose:Function
-}
-
-export interface imgenes {
-  id : number ,
-  nombre : string,
-  cliente : string ,
-  tecnica : string,
-  imgProyecto : {
-    img:any
-  }
-  descripcion : string
-  img :imgType []
-} 
-
-export interface imgType {
-  src : any ,
-  alt : string
-}
-
-
-export const contenidoProyectos:imgenes[] = [
-  {
-      id : 1 ,
-      nombre : 'Personajes',
-      cliente : 'Personajes propios',
-      tecnica : 'Imágenes vectoriales',
-      imgProyecto : {
-        img : cangrejo
-      },
-      descripcion : 'Caricaturas para un proyecto propio en el que se tenía como límite 5 minutos para la creación del boceto',
-      img : [
-          {
-              src : cangrejo,
-              alt : 'cangrejo'
-          },
-          {
-              src : murcielago,
-              alt :  'murcielago'
-          },
-          {
-              src: pollo ,
-              alt : 'pollo'
-          }
-      ]
-  },
-  {
-      id : 2 ,
-      nombre : 'Diseño de personajes Ory el conejo',
-      cliente : 'Personaje propio',
-      tecnica : 'Imágenes vectoriales',
-      descripcion : 'Ory el conejo es un personaje propio registrado ante indautor en el 2014 ',
-      imgProyecto : {
-        img : OryMago
-      },
-      img : [
-          {
-              src : OryMago,
-              alt : 'OryMago'
-          },
-          {
-              src : ilustracion,
-              alt :  'ilustracion'
-          },
-          {
-              src: trabajando ,
-              alt : 'trabajando'
-          }
-      ]
-  }
-]
+import { imgenes, PropsIllustracion } from './types'
+import { contentIllustration } from 'data/content'
+import { Content } from 'components/StylesComponents/ContentStyles';
 
 
 
@@ -108,7 +21,6 @@ const ContenidoIllustracion:FC<PropsIllustracion> = ({handleClose}:PropsIllustra
 
   
 
-  console.log(contenidoProyectos)
   const handleThumbnail = (src:string)=> {
     setmodalContentido({
       ...modalContentido ,
@@ -168,7 +80,7 @@ const ContenidoIllustracion:FC<PropsIllustracion> = ({handleClose}:PropsIllustra
         <div className=' items flex rowS flexStart'>
         {/* <Proyecto img={OryMago} titulo={'mago'}  /> */}
         {
-          contenidoProyectos.map((item:imgenes)=> (
+          contentIllustration.map((item:imgenes)=> (
             <div
             className='item-img pr-5 cursor flex column'
             style={{
@@ -185,7 +97,7 @@ const ContenidoIllustracion:FC<PropsIllustracion> = ({handleClose}:PropsIllustra
                       )}
             data-bs-target='#modalIllustracion'
           >
-            <img className='mr-5' src={item.imgProyecto.img} />
+            <img className='mr-5' src={item.imgProyecto.img} alt='imgProyecto' />
             <span className='proyectoNombre mouse pl-5 f-18 pt-2 flex column centrar'>
               <p>{item.cliente}</p>
             </span>
@@ -220,12 +132,12 @@ const ContenidoIllustracion:FC<PropsIllustracion> = ({handleClose}:PropsIllustra
               </div>
               <div className='modal-body'>
                 <div className=''>
-                  <img className='imagenPrincipal' src={modalContentido.imgProyecto.img } />
+                  <img className='imagenPrincipal' src={modalContentido.imgProyecto.img } alt='imgProyecto' />
                 </div>
                 <div className='thumbmail-container'>
                   {
                     modalContentido.img.map((item:{src:string})=> (
-                      <img src={item.src} key={item.src} className='thumbmail' onClick={()=>handleThumbnail(item.src)} />
+                      <img src={item.src} key={item.src} className='thumbmail' onClick={()=>handleThumbnail(item.src)} alt='thumbmail' />
 
                     ))
                   }

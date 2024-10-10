@@ -1,8 +1,7 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import Sketch from 'react-p5';
 import p5Types from 'p5'
 import { ImagenModel } from '../Models/Imagen.model';
-import cat from '../../img/cat.png'
 
 
 
@@ -22,13 +21,7 @@ const Imagen: FC<ImagenModel> = ({ width, height }: ImagenModel) => {
 
     const draw = (p5: p5Types) => {
         
-        // p5.image(img, p5.mouseX,p5.mouseY, width, height)
-        
-        // for (let i = 0; i < 50; i++) {
-        //     p5.tint(p5.random(0,255), p5.random(0,255) , p5.random(0,255))
-        //     p5.image(img , 0 , 0 , width , height)
-        // }
-        
+    
 
     }
 

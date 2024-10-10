@@ -1,96 +1,12 @@
-import React, { FC, useState } from 'react'
-import { Content } from '../StylesComponents/ContentStyles'
-
-import p1 from '../../img/fizhart/krab.png'
-import Proyecto from './Proyecto'
-import fizh1 from '../../img/front/fizhart1.png'
-import fizh2 from '../../img/front/fizhart2.png'
-import fizh3 from '../../img/front/fizhart3.png'
-import OryMago from '../../img/fizhart/OryMago.png'
-import ilustracion from '../../img/fizhart/illustracion.png'
-import trabajando from '../../img/fizhart/trabajando.png'
-
-import c1 from '../../img/front/c1.png'
-import c2 from '../../img/front/c2.png'
-import c3 from '../../img/front/c3.png'
+import { FC, useState } from 'react'
 
 
-
-interface PropsContent {
-  handleClose: Function
-}
-
-export interface imgenes {
-  id : number ,
-  nombre : string,
-  cliente : string ,
-  tecnica : string,
-  liga? : string,
-  imgProyecto : {
-    img:any
-  }
-  descripcion : string
-  img :imgType []
-} 
-
-export interface imgType {
-  src : any ,
-  alt : string
-}
+import {  PropsContent } from './types'
+import { Content } from 'components/StylesComponents/ContentStyles'
+import { contentWeb } from 'data/content'
+import { imgContentWeb } from 'data/types'
 
 
-export const contenidoProyectos:imgenes[] = [
-  {
-      id : 1 ,
-      nombre : 'página web para Fizharts',
-      cliente : 'Fizharts',
-      tecnica : 'html5 JavaScript , php , Css3',
-      liga : 'http://fizharts.com/',
-      imgProyecto : {
-        img : fizh1
-      },
-      descripcion : 'Se realizo la página web desde la toma de requerimientos hasta la maquetación y programación de la misma , la creación de imágenes vectoriales y retoque fotográfico.',
-      img : [
-          {
-              src : fizh1,
-              alt : 'fizh1'
-          },
-          {
-              src : fizh2,
-              alt :  'fizh1'
-          },
-          {
-              src: fizh3 ,
-              alt : 'fizh1'
-          }
-      ]
-  },
-  {
-      id : 2 ,
-      nombre : 'planetas covid',
-      cliente : 'Planetas Covid',
-      tecnica : 'html5 React , sass ',
-      liga : 'https://juliopicazo06.github.io/multimedia/',
-      descripcion : 'Proyecto escolar para la especialidad de Diseño multimedia , donde se consumió la Api de la ciudad de méxico de la ocupación hospitalaria en la capital de México y el área metropolitana. transformando datos en imágenes en objetos 3D',
-      imgProyecto : {
-        img : c1
-      },
-      img : [
-          {
-              src : c1,
-              alt : 'c1'
-          },
-          {
-              src : c2,
-              alt :  'c2'
-          },
-          {
-              src: c3 ,
-              alt : 'c3'
-          }
-      ]
-  }
-]
 const ContenidoProyectos: FC<PropsContent> = ({
   handleClose
 }: PropsContent): JSX.Element => {
@@ -108,9 +24,6 @@ const ContenidoProyectos: FC<PropsContent> = ({
   })
 
 
-
-
-  console.log(contenidoProyectos)
   const handleThumbnail = (src:string)=> {
     setmodalContentido({
       ...modalContentido ,
@@ -170,9 +83,8 @@ const ContenidoProyectos: FC<PropsContent> = ({
           </p>
         </div>
         <div className=' items flex rowS flexStart'>
-        {/* <Proyecto img={OryMago} titulo={'mago'}  /> */}
         {
-          contenidoProyectos.map((item:imgenes)=> (
+          contentWeb.map((item:imgContentWeb)=> (
             <div
             className='item-img pr-5 cursor flex column'
             style={{
@@ -190,7 +102,7 @@ const ContenidoProyectos: FC<PropsContent> = ({
                       )}
             data-bs-target='#exampleModal'
           >
-            <img className='mr-5' src={item.imgProyecto.img} />
+            <img className='mr-5' src={item.imgProyecto.img} alt='img' />
             <span className='proyectoNombre mouse pl-5 f-18 pt-2 flex column centrar'>
               <p>{item.cliente}</p>
             </span>
@@ -219,7 +131,10 @@ const ContenidoProyectos: FC<PropsContent> = ({
                 &nbsp;&nbsp;
                 {
                      modalContentido.liga!=='' ? (
-                       <a className="btn btn-danger ml-5 pl-4" href={modalContentido.liga} target="_blank">Ir al Proyecto</a>
+                       <a className="btn btn-danger ml-5 pl-4" 
+                          href={modalContentido.liga} 
+                          rel='noreferrer'
+                          target="_blank">Ir al Proyecto</a>
                      ):null 
                    }
                 <button
@@ -231,12 +146,19 @@ const ContenidoProyectos: FC<PropsContent> = ({
               </div>
               <div className='modal-body'>
                 <div className=''>
-                  <img className='imagenPrincipal' src={modalContentido.imgProyecto.img } />
+                  <img className='imagenPrincipal' 
+                        src={modalContentido.imgProyecto.img }
+                        alt='imagenPrincipal' />
                 </div>
                 <div className='thumbmail-container'>
                   {
                     modalContentido.img.map((item:{src:string})=> (
-                      <img src={item.src} key={item.src} className='thumbmail' onClick={()=>handleThumbnail(item.src)} />
+                      <img src={item.src} 
+                          key={item.src} 
+                          className='thumbmail'
+                           onClick={()=>handleThumbnail(item.src)} 
+                           alt='item'
+                           />
 
                     ))
                   }

@@ -222,7 +222,7 @@ body{
         background-color: rgba(0, 0, 0, 0.212);
         padding:5px;
         cursor: pointer;
-        &:hover{}
+        // Remove empty ruleset
         background-color: rgba(0, 0, 0, 0.431);
     }
 }
@@ -236,7 +236,7 @@ body{
 }
 
 .imagenSkills{
-    max-width: 200px;
+    max-width: 5.0rem;
     height:auto
 }
 

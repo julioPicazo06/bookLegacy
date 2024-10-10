@@ -1,24 +1,24 @@
-import { TimelineItem, TimelineOppositeContent } from '@material-ui/lab'
+import { TimelineItem, TimelineOppositeContent } from '@mui/lab'
 import React, { FC } from 'react'
-import { TimeLineContentModel } from '../../Contenidos/TimeLineContent'
-import { makeStyles } from '@material-ui/core/styles';
-import Timeline from '@material-ui/lab/Timeline';
-import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
-import TimelineConnector from '@material-ui/lab/TimelineConnector';
-import TimelineContent from '@material-ui/lab/TimelineContent';
-import TimelineDot from '@material-ui/lab/TimelineDot';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import { Icon } from '@material-ui/core';
+import { TimeLineContentModel } from 'data/TimeLineContent'
+import { makeStyles } from '@mui/styles';
+import { TimelineSeparator  ,TimelineDot , TimelineContent , TimelineConnector } from 'utils/lab';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+
+import { Theme } from '@mui/material';
+import CodeIcon from '@mui/icons-material/Code';
+
 
 
 
 
 const TimeLineGeneral:FC<TimeLineContentModel> = ({nombre , fecha, puesto}:TimeLineContentModel) => {
-    const useStyles = makeStyles((theme) => ({
+    const useStyles = makeStyles((theme:Theme) => ({
         paper: {
           padding: '6px 16px',
+          fontFamily: 'Oswald',
+          
         },
         secondaryTail: {
           backgroundColor: theme.palette.secondary.main,
@@ -36,16 +36,18 @@ const TimeLineGeneral:FC<TimeLineContentModel> = ({nombre , fecha, puesto}:TimeL
           </Typography>
         </TimelineOppositeContent>
         <TimelineSeparator style={{
-          borderColor:'red'
+          borderColor:'black'
         }}>
           <TimelineDot style={{
           backgroundColor:'#FF414D'
         }}>
-          <Icon >code</Icon>
+          <CodeIcon />
           </TimelineDot>
-          <TimelineConnector />
+          <TimelineConnector style={{
+          backgroundColor:'#7373738c'
+        }}/>
         </TimelineSeparator>
-        <TimelineContent>
+        <TimelineContent >
           <Paper elevation={3} className={classes.paper}>
             <h3> {nombre}</h3>
             <p>{puesto}</p>

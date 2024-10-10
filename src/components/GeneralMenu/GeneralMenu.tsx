@@ -1,15 +1,17 @@
-import React, { FC, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ArrowButton, MenuG, MenuSection, Modulo } from '../StylesComponents/ContentStyles'
-import yoImg from '../../img/yo.png'
-import contactoImg from '../../img/contacto.png'
-import illustracionImg from '../../img/illustracion.png'
-import frontEndImg from '../../img/frontEnd.png'
-import { ContenidoYo } from '../ContenidoYo/ContenidoYo'
-import ContenidoIllustracion from '../ContenidoIllustracion/ContenidoIllustracion'
-import ContenidoContact from '../ContenidoContact/ContenidoContact'
-import ContenidoProyectos from '../ContenidoProyectos/ContenidoProyectos'
-import { Link } from 'react-scroll'
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ContenidoContact from "components/ContentContact/ContentContact"
+import ContenidoIllustracion from "components/ContentIllustration/ContentIllustration"
+import ContenidoProyectos from "components/ContentProyects/ContentProyects"
+import { ArrowButton, MenuG, Modulo, MenuSection } from "components/StylesComponents/ContentStyles"
+import { FC, useRef, useState, useEffect } from "react"
+import { Link } from "react-scroll"
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+
+import yoImg from 'img/yo.png';
+import frontEndImg from 'img/frontEnd.png';
+import illustracionImg from 'img/illustracion.png';
+import contactoImg from 'img/contacto.png';
+import { colors } from "data/content"
+import { ContenidoYo } from "components/ContentMe"
 
 export const MenuGeneral:FC = ():JSX.Element => {
 
@@ -33,12 +35,7 @@ export const MenuGeneral:FC = ():JSX.Element => {
         width: number,
         height: number
     }
-    const [colores, setColores] = useState({
-        yoColor: '#002D40',
-        frontEndColor: '#FF414D',
-        illustracionColor: '#329D9C',
-        contactoColor: '#56C596'
-    })
+
     const [visible, setVisible] = useState<visibleModel>({
         yo: {
             visible: true,
@@ -96,8 +93,7 @@ export const MenuGeneral:FC = ():JSX.Element => {
 
     const handleClose = (e: any) => {
         let dataE = e.target.dataset.text as string
-        let noEsta = Object.keys(visible).filter((item) => item != dataE)
-        console.log(dataE)
+        let noEsta = Object.keys(visible).filter((item) => item !== dataE)
         setButtonVisible(!buttonVisible)
         setVisible({
             ...visible,
@@ -151,7 +147,7 @@ export const MenuGeneral:FC = ():JSX.Element => {
 
             <MenuG  display={'flex'} row={true} wrap={true} color={"#56C596"}>
                 <Modulo
-                    background={colores.yoColor}
+                    background={colors['aboutColor']}
                     width={visible.yo.width}
                     height={visible.yo.height}
                     display={visible.yo.visible}>
@@ -162,7 +158,6 @@ export const MenuGeneral:FC = ():JSX.Element => {
                                     <img className="menu-img" data-text="yo" onClick={(e) => handleClick(e)} src={yoImg} alt="yo" />
                                     <h1 data-text="yo" onClick={(e) => handleClick(e)}>Yo</h1>
                                 </div>
-                                {/* <button data-text="yo" onClick={(e)=> handleClose(e)}>Cerrar</button> */}
                             </MenuSection>
                         ) : (<ContenidoYo handleClose={handleClose} />)
                     }
@@ -170,7 +165,7 @@ export const MenuGeneral:FC = ():JSX.Element => {
 
                 </Modulo>
                 <Modulo
-                    background={colores.frontEndColor}
+                    background={colors['frontEndColor']}
                     width={visible.frontEnd.width}
                     height={visible.frontEnd.height}
                     display={visible.frontEnd.visible}>
@@ -188,7 +183,7 @@ export const MenuGeneral:FC = ():JSX.Element => {
 
                 </Modulo>
                 <Modulo
-                    background={colores.illustracionColor}
+                    background={colors['illustracionColor']}
                     width={visible.illustracion.width}
                     height={visible.illustracion.height}
                     display={visible.illustracion.visible}>
@@ -203,7 +198,7 @@ export const MenuGeneral:FC = ():JSX.Element => {
 
                 </Modulo>
                 <Modulo
-                    background={colores.contactoColor}
+                    background={colors['contactoColor']}
                     width={visible.contacto.width}
                     height={visible.contacto.height}
                     display={visible.contacto.visible}>

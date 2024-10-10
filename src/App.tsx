@@ -1,6 +1,6 @@
 import React from 'react'
-import { MenuGeneral } from './components/MenuGeneral/MenuGeneral'
 import { Portada } from './components/portada/Portada'
+import { MenuGeneral } from 'components/GeneralMenu/GeneralMenu'
 
 
 export const App = () => {
